@@ -1,15 +1,22 @@
 import { useState } from "react";
 
-const MenuButton = ({ containerWidth = 30, color = "white" }) => {
+const MenuButton = ({
+  containerWidth = 30,
+  color = "white",
+  barHeight = 4,
+  barBorderRadius = 3,
+  barMargins = "6px 0 6px 0px",
+  barTransition = "200ms all linear",
+}) => {
   const [position, setPosition] = useState(false);
 
   const defaultBarStyle = {
     backgroundColor: color,
-    height: "4px",
+    height: barHeight + "px",
     display: "block",
-    borderRadius: "3px",
-    margin: "6px 0 6px 0px",
-    transition: "200ms all linear",
+    borderRadius: barBorderRadius + "px",
+    margin: barMargins,
+    transition: barTransition,
     transform: "rotate(0) translateY(0)",
     width: "100%",
   };
@@ -30,7 +37,7 @@ const MenuButton = ({ containerWidth = 30, color = "white" }) => {
 
   return (
     <div
-      style={{ width: containerWidth + "px" }}
+      style={{ width: containerWidth + "px", cursor: "pointer" }}
       onClick={() => {
         setPosition(!position);
       }}
